@@ -36,7 +36,7 @@ app.get('/*', (req, res)=>{
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 })
 
-mongoose.connect('mongodb://wali:wali@ds029793.mlab.com:29793/fcc_night_dev', {useMongoClient: true})
+mongoose.connect(keys.MONGODB_URI, {useMongoClient: true})
 .then(()=>console.log('mLab conncected'))
 .catch(e => 'logged out')
 
