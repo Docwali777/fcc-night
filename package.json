@@ -35,6 +35,7 @@
   "scripts": {
     "conserver": "concurrently \" node index.js \" \" yarn run server  \"  ",
     "server": "webpack --env=dev ",
-    "auto": "nodemon index.js"
+    "auto": "nodemon index.js",
+    "start": "node index.js"
   }
 }
