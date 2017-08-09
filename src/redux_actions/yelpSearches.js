@@ -6,7 +6,7 @@ return dispatch =>{
     .then( info =>{
       dispatch({
         type: 'BUSINESS_SEARCH',
-        payload: search
+        payload: info.data.businesses
       })
     }).catch(e =>{
       console.log('Error posting to yelp search', e);

@@ -60,7 +60,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "61300c3f8a8809e9974c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2c4e8aa0986a011926da"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -27677,7 +27677,7 @@ function search(search) {
     _axios2.default.post('/api/yelp/search', search).then(function (info) {
       dispatch({
         type: 'BUSINESS_SEARCH',
-        payload: search
+        payload: info.data.businesses
       });
     }).catch(function (e) {
       console.log('Error posting to yelp search', e);
