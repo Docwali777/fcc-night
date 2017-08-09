@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise
 
-if(process.NODE_ENV !== 'production'){
+if(process.env.NODE_ENV !== 'production'){
   const webpack = require('webpack');
   const devMiddleware = require('webpack-dev-middleware')
   const hotMiddleware = require('webpack-hot-middleware')
