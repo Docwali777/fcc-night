@@ -25,7 +25,7 @@ module.exports = (app) =>{
   })
   app.post('/api/yelp/search', (req, res)=>{
 let {city_state, term} = req.body
-
+res.send(req.body)
 
 
   })

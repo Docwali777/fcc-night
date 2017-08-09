@@ -28,7 +28,6 @@ constructor(props){
               placeholder= 'search by city,state'
               onChange={this.search}
               name='city_state'
-              autoComplete='on'
             />
           </div>
 
