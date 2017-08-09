@@ -23,23 +23,25 @@ constructor(props){
     return(
       <div>
         <form onSubmit={this.formData}>
-          <div>
+          <div className='form-group'>
             <input
+              className='form-control'
               placeholder= 'search by city,state'
               onChange={this.search}
               name='city_state'
             />
           </div>
 
-          <div>
+          <div className='form-group'>
             <input
+              className='form-control'
               placeholder= 'Search Term'
               onChange={this.search}
               name='term'
             />
           </div>
 
-          <button>Sumit</button>
+          <button className='btn btn-success'>Sumit</button>
         </form>
       </div>
     )
