@@ -9,25 +9,25 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise
 
-if(process.env.NODE_ENV !== 'production'){
-  const webpack = require('webpack');
-  const devMiddleware = require('webpack-dev-middleware')
-  const hotMiddleware = require('webpack-hot-middleware')
-const config = require('./webpack.dev')
-
-const compiler = webpack(config)
-
-const middlware = devMiddleware(compiler, {
-  publicPath: config.output.publicPath,
-  noInfo: true
-})
-
-app.use(middlware)
-app.use(hotMiddleware(compiler))
-
-} else {
-return false
-}
+// if(process.env.NODE_ENV !== 'production'){
+//   const webpack = require('webpack');
+//   const devMiddleware = require('webpack-dev-middleware')
+//   const hotMiddleware = require('webpack-hot-middleware')
+// const config = require('./webpack.dev')
+//
+// const compiler = webpack(config)
+//
+// const middlware = devMiddleware(compiler, {
+//   publicPath: config.output.publicPath,
+//   noInfo: true
+// })
+//
+// app.use(middlware)
+// app.use(hotMiddleware(compiler))
+//
+// } else {
+// return false
+// }
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
