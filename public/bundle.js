@@ -60,7 +60,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1645797aa461cf277064"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "61300c3f8a8809e9974c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -26297,8 +26297,7 @@ var Form_For_Location = function (_Component) {
             _react2.default.createElement('input', {
               placeholder: 'search by city,state',
               onChange: this.search,
-              name: 'city_state',
-              autoComplete: 'on'
+              name: 'city_state'
             })
           ),
           _react2.default.createElement(
