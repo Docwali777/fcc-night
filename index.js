@@ -25,6 +25,8 @@ const middlware = devMiddleware(compiler, {
 app.use(middlware)
 app.use(hotMiddleware(compiler))
 
+} else {
+return false
 }
 
 app.use(bodyParser.urlencoded({extended: false}))
