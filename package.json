@@ -36,6 +36,8 @@
     "conserver": "concurrently \" node index.js \" \" yarn run server  \"  ",
     "server": "webpack --env=dev ",
     "auto": "nodemon index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "webpack --env=prod --progress --profile --colors"
+
   }
 }
