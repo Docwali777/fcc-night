@@ -1,4 +1,4 @@
-if(process.env.NODE !== 'production'){
+if(process.env.NODE_ENV !== 'production'){
   console.log('development');
    module.exports = require('./keys.dev')
 } else {

@@ -26,6 +26,7 @@ app.use(middlware)
 app.use(hotMiddleware(compiler))
 
 }
+
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(express.static('public'))
