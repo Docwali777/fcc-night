@@ -1,39 +1,13 @@
 import React, { Component } from 'react'
 
-import axios from 'axios'
-
-
+import Form_For_Location from './components/forms/From_For_Location'
 
 class App extends Component{
-  constructor(props){
-    super(props)
-    this.state = {
-      places: []
-    }
-  }
-  componentWillMount(){
-this.search()
-  }
-  componentDidMount(){
-this.search()
-  }
 
-
-  search = ()=>{
-    axios.get('/api/yelp/search')
-      .then(b =>{
-        this.setState({places: b.data.businesses})
-      })
-}
   render(){
     return(
       <div>
-        {this.state.places.map(i =>{
-          return(<p key={i.id}>
-            {i.id}
-          </p>)
-        })}
-
+          <Form_For_Location />
       </div>
     )
   }
