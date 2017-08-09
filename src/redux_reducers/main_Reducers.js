@@ -1,7 +1,7 @@
-export default function main_Redcuer(state= {}, action){
+export default function main_Redcuer(state= null, action){
   switch(action.type){
     case 'BUSINESS_SEARCH':
-    return {...state, ...action.payload};
+    return action.payload
     break;
     default: return state
   }

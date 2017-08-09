@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import Form_For_Location from './components/forms/From_For_Location'
+import Business_Listings from './components/pages/businessListings'
 
 class App extends Component{
 
@@ -8,6 +9,8 @@ class App extends Component{
     return(
       <div>
           <Form_For_Location />
+          <hr />
+          <Business_Listings />
       </div>
     )
   }

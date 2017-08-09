@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise
 
 if(process.env.NODE_ENV === 'dev'){
-  console.log(process.env.NODE_ENV);
+  console.log('in development mode',process.env.NODE_ENV);
   const webpack = require('webpack');
   const devMiddleware = require('webpack-dev-middleware')
   const hotMiddleware = require('webpack-hot-middleware')
@@ -26,8 +26,6 @@ const middlware = devMiddleware(compiler, {
 app.use(middlware)
 app.use(hotMiddleware(compiler))
 
-} else {
-return false
 }
 
 app.use(bodyParser.urlencoded({extended: false}))
