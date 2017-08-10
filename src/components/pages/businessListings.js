@@ -2,13 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import Listing from './Individual-Listing'
-import * as actions from '../../redux_actions/yelpSearches'
 
 class Business_Listings extends Component{
 
-  componentDidMount(){
-  this.props.INITIAL_DATA_BASED_LOCATION()
-  }
 
 empty = () =>{
   return(
@@ -45,4 +41,4 @@ function mapStateToProps(state){
     searchReturn: state.business
   }
 }
-export default connect(mapStateToProps, actions)(Business_Listings)
+export default connect(mapStateToProps)(Business_Listings)

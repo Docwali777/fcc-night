@@ -13,16 +13,3 @@ return dispatch =>{
     })
 }
 }
-
-export function INITIAL_DATA_BASED_LOCATION(){
-  return dispatch =>{
-    axios.get('/api/yelp/search')
-      .then(info =>{
-        console.log(info);
-        dispatch({
-          type: 'INITIAL_DATA_BASED_LOCATION',
-          payload: info.data.businesses
-        })
-      }).catch(e =>{console.log('err axios,get');})
-  }
-}

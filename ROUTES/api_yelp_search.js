@@ -9,7 +9,6 @@ module.exports = (app) =>{
 
 latitude()
 .then(location =>{
-  console.log('lat: ', location.latitude, 'long: ', location.longitude );
 
   axios({
       method: 'get',
