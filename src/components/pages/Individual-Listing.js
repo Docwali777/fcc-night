@@ -7,6 +7,7 @@ class Listing extends Component {
 
   }
   render() {
+    
     return (
 
       <Grid>

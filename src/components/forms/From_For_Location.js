@@ -18,6 +18,7 @@ constructor(props){
   formData = (e) =>{
     e.preventDefault()
     this.props.search(this.state)
+
   }
   render(){
     return(
@@ -29,6 +30,7 @@ constructor(props){
               placeholder= 'search by city,state'
               onChange={this.search}
               name='city_state'
+              value={this.state.city_state}
             />
           </div>
 
@@ -38,6 +40,7 @@ constructor(props){
               placeholder= 'Search Term'
               onChange={this.search}
               name='term'
+              value={this.state.term}
             />
           </div>
 

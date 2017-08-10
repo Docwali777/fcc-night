@@ -4,11 +4,13 @@ const path = require('path');
 const PORT  = process.env.PORT || 3000
 const axios = require('axios');
 const keys = require('./PASSWORDS/keys')
-const latitude = require('latitude');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise
 
+
+
+//Set up hot-reloading ONLY in development
 if(process.env.NODE_ENV === 'dev'){
   console.log('in development mode',process.env.NODE_ENV);
   const webpack = require('webpack');
@@ -32,12 +34,14 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(express.static('public'))
 
+//ROUTES
 require('./ROUTES/api_yelp_search')(app)
 
 app.get('/*', (req, res)=>{
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 })
 
+//MONGOOSE for Mongo
 mongoose.connect(keys.MONGODB_URI, {useMongoClient: false})
 .then(()=>console.log('mLab conncected'))
 .catch(e => 'logged out')

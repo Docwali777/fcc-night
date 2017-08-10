@@ -1,25 +1,39 @@
 const search = require('../MODELS/search');
 const keys = require('../PASSWORDS/keys')
 const axios = require('axios');
-
+const latitude = require('latitude')
 
 module.exports = (app) =>{
   app.get('/api/yelp/search', (req, res)=>{
-    axios({
-        method: 'get',
-      url: 'https://api.yelp.com/v3/businesses/search',
-      headers: {
-        Authorization: keys.YELP_AUTHORIZATION_KEY
-      },
-      params: {
-        location: '22003',
-        term: 'dancing'
-      }
-    }).then(term =>{
-      res.send(term.data)
-    }).catch(e =>{
-      console.log(e);
-    })
+
+
+latitude()
+.then(location =>{
+  console.log('lat: ', location.latitude, 'long: ', location.longitude );
+
+  axios({
+      method: 'get',
+    url: 'https://api.yelp.com/v3/businesses/search',
+    headers: {
+      Authorization: keys.YELP_AUTHORIZATION_KEY
+    },
+    params: {
+      latitude: location.latitude,
+      longitude: location.longitude,
+      term: 'dancing'
+    }
+  }).then(term =>{
+    res.send(term.data)
+  }).catch(e =>{
+    console.log(e);
+  })
+
+
+
+}).catch(e =>{
+  console.log(e);
+})
+
 
 
   })
@@ -39,7 +53,11 @@ axios({
     term: term
   }
 }).then(term =>{
+
+
   res.send(term.data)
+
+
 }).catch(e =>{
   console.log(e);
 })
