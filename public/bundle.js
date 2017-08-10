@@ -60,7 +60,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0a14d32ac4052d33ffc0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c6a53e0c95f4957bf15a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -31067,7 +31067,15 @@ var Form_For_Location = function (_Component) {
             { className: 'btn btn-success' },
             'Sumit'
           )
-        )
+        ),
+        this.state.city_state !== '' ? _react2.default.createElement(
+          'p',
+          null,
+          'Searches in ',
+          this.state.city_state,
+          ' for ',
+          this.state.term
+        ) : false
       );
     }
   }]);
@@ -33311,20 +33319,24 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Business_Listings = function (_Component) {
   _inherits(Business_Listings, _Component);
 
-  function Business_Listings(props) {
+  function Business_Listings() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, Business_Listings);
 
-    var _this = _possibleConstructorReturn(this, (Business_Listings.__proto__ || Object.getPrototypeOf(Business_Listings)).call(this, props));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this.empty = function () {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Business_Listings.__proto__ || Object.getPrototypeOf(Business_Listings)).call.apply(_ref, [this].concat(args))), _this), _this.empty = function () {
       return _react2.default.createElement(
         'div',
         null,
         'Search'
       );
-    };
-
-    _this.viewListings = function () {
+    }, _this.viewListings = function () {
       return _react2.default.createElement(
         'div',
         null,
@@ -33332,17 +33344,11 @@ var Business_Listings = function (_Component) {
           return _react2.default.createElement(
             'div',
             { key: i.id },
-            _react2.default.createElement(_IndividualListing2.default, i),
-            _react2.default.createElement('hr', null)
+            _react2.default.createElement(_IndividualListing2.default, i)
           );
         })
       );
-    };
-
-    _this.state = {
-      places: []
-    };
-    return _this;
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Business_Listings, [{
@@ -33400,10 +33406,7 @@ var Listing = function (_Component) {
   function Listing(props) {
     _classCallCheck(this, Listing);
 
-    var _this = _possibleConstructorReturn(this, (Listing.__proto__ || Object.getPrototypeOf(Listing)).call(this, props));
-
-    console.log(_this.props);
-    return _this;
+    return _possibleConstructorReturn(this, (Listing.__proto__ || Object.getPrototypeOf(Listing)).call(this, props));
   }
 
   _createClass(Listing, [{
@@ -33413,19 +33416,65 @@ var Listing = function (_Component) {
         _reactBootstrap.Grid,
         null,
         _react2.default.createElement(
-          _reactBootstrap.Row,
+          _reactBootstrap.Well,
           null,
           _react2.default.createElement(
-            _reactBootstrap.Col,
-            { xs: 4, md: 4 },
-            _react2.default.createElement('img', { style: { height: 100, width: 100 }, src: this.props.image_url })
-          ),
-          _react2.default.createElement(
-            _reactBootstrap.Col,
-            { xs: 8, md: 8 },
-            this.props.name,
-            _react2.default.createElement('hr', null),
-            this.props.location.address1
+            _reactBootstrap.Row,
+            { className: 'show-grid' },
+            _react2.default.createElement(
+              _reactBootstrap.Panel,
+              null,
+              _react2.default.createElement(
+                _reactBootstrap.Col,
+                { xs: 6, md: 8 },
+                'How May People Are Going?  \xA0'
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.Col,
+                { xs: 6, md: 4 },
+                _react2.default.createElement(
+                  _reactBootstrap.Button,
+                  { bsStyle: 'danger', bsSize: 'xsmall' },
+                  ' - '
+                ),
+                _react2.default.createElement(
+                  _reactBootstrap.Button,
+                  { bsStyle: 'default', bsSize: 'small' },
+                  '0'
+                ),
+                _react2.default.createElement(
+                  _reactBootstrap.Button,
+                  { bsStyle: 'success', bsSize: 'xsmall' },
+                  ' + '
+                )
+              )
+            ),
+            _react2.default.createElement(
+              _reactBootstrap.Col,
+              { xs: 6, md: 3 },
+              _react2.default.createElement('img', { style: {
+                  height: 100,
+                  width: 100
+                }, src: this.props.image_url })
+            ),
+            _react2.default.createElement(
+              _reactBootstrap.Col,
+              { xs: 6, md: 9 },
+              _react2.default.createElement(
+                'strong',
+                null,
+                '  ',
+                this.props.name
+              ),
+              ' \xA0 ',
+              this.props.location.address1,
+              ' \xA0 ',
+              this.props.location.city,
+              ',',
+              this.props.location.state,
+              ' \xA0 ',
+              this.props.location.zip_code
+            )
           )
         )
       );

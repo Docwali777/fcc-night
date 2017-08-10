@@ -1,28 +1,47 @@
-import React, { Component } from 'react'
-import {Grid, Col, Row} from 'react-bootstrap'
+import React, {Component} from 'react'
+import {Grid, Col, Row, Button, Well, Panel} from 'react-bootstrap'
 
-class Listing extends Component{
-  constructor(props){
+class Listing extends Component {
+  constructor(props) {
     super(props)
-    console.log(this.props);
+
   }
-  render(){
+  render() {
     return (
 
       <Grid>
-    <Row>
-      <Col xs={4} md={4}>
-        <img style={{height: 100, width: 100}} src={this.props.image_url} />
+          <Well>
+        <Row className="show-grid">
+          <Panel>
+          <Col xs={6} md={8}>
+              How May People Are Going?  &nbsp;
+          </Col>
 
-      </Col>
+          <Col xs={6} md={4}>
+            <Button bsStyle='danger' bsSize='xsmall'> - </Button>
+            <Button bsStyle='default' bsSize='small'>0</Button>
+            <Button bsStyle='success' bsSize='xsmall'> + </Button>
+          </Col>
 
-      <Col xs={8} md={8}>
-          {this.props.name}
-          <hr />
-        {this.props.location.address1}
-      </Col>
-    </Row>
-    </Grid>
+            </Panel>
+          <Col xs={6} md={3}>
+
+            <img style={{
+              height: 100,
+              width: 100
+            }} src={this.props.image_url}/>
+
+
+          </Col>
+
+          <Col xs={6} md={9}>
+          <strong>  {this.props.name}</strong> &nbsp; {this.props.location.address1} &nbsp; {this.props.location.city},{this.props.location.state} &nbsp; {this.props.location.zip_code}
+
+          </Col>
+
+        </Row>
+          </Well>
+      </Grid>
     )
   }
 }

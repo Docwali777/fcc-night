@@ -43,6 +43,7 @@ constructor(props){
 
           <button className='btn btn-success'>Sumit</button>
         </form>
+        {this.state.city_state !== '' ? <p>Searches in {this.state.city_state} for {this.state.term}</p> : false}
       </div>
     )
   }

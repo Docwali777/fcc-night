@@ -4,12 +4,6 @@ import { connect } from 'react-redux'
 import Listing from './Individual-Listing'
 
 class Business_Listings extends Component{
-constructor(props){
-  super(props)
-  this.state = {
-    places: []
-  }
-}
 
 empty = () =>{
   return(
@@ -24,7 +18,6 @@ viewListings = () =>{
         return (
         <div key={i.id}>
           <Listing  {...i} />
-          <hr />
         </div>
         )
       })}
