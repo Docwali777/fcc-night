@@ -4,10 +4,17 @@ import {Grid, Col, Row, Button, Well, Panel} from 'react-bootstrap'
 class Listing extends Component {
   constructor(props) {
     super(props)
-
+      this.state = {
+        likes: 0
+      }
   }
+
+isGoing = () =>{
+  console.log(this.props.id);
+}
+
   render() {
-    
+
     return (
 
       <Grid>
@@ -20,8 +27,8 @@ class Listing extends Component {
 
           <Col xs={6} md={4}>
             <Button bsStyle='danger' bsSize='xsmall'> - </Button>
-            <Button bsStyle='default' bsSize='small'>0</Button>
-            <Button bsStyle='success' bsSize='xsmall'> + </Button>
+            <Button bsStyle='default' bsSize='small'>{this.state.likes}</Button>
+            <Button onClick={()=>this.isGoing()} bsStyle='success' bsSize='xsmall'> + </Button>
           </Col>
 
             </Panel>
