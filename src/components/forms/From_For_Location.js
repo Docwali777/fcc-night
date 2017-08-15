@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import Business_Listings from '../pages/businessListings'
+
 import { connect } from 'react-redux'
 import * as actions from '../../redux_actions/yelpSearches'
 
@@ -13,7 +15,7 @@ constructor(props){
 }
 
   search =(e) =>{
-      this.setState({[e.target.name]: e.target.value})
+    this.setState({[e.target.name]: e.target.value})
   }
   formData = (e) =>{
     e.preventDefault()
@@ -47,6 +49,8 @@ constructor(props){
           <button className='btn btn-success'>Sumit</button>
         </form>
         {this.state.city_state !== '' ? <p>Searches in {this.state.city_state} for {this.state.term}</p> : false}
+        <hr />
+        <Business_Listings />
       </div>
     )
   }

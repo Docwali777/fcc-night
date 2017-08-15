@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import {Grid, Col, Row, Button, Well, Panel} from 'react-bootstrap'
+import { connect } from 'react-redux'
+import * as actions from '../../redux_actions/yelpSearches'
 
 class Listing extends Component {
   constructor(props) {
@@ -8,13 +10,24 @@ class Listing extends Component {
         likes: 0
       }
   }
+componentDidMount(){
+this.setGoingStatus()
+}
+setGoingStatus =() =>{
+this.props.going.map(i =>{
+if(i.id == this.props.id){
+this.setState({likes: i.isGoing})
+}
+})
+}
 
 isGoing = () =>{
-  console.log(this.props.id);
+console.log(this.props.id);
+this.setState({likes: this.state.likes + 1})
+this.props.isGoing(this.props.id)
 }
 
   render() {
-
     return (
 
       <Grid>
@@ -53,4 +66,11 @@ isGoing = () =>{
     )
   }
 }
-export default Listing
+
+function mapStateToProps(state){
+  return {
+    going: state.going,
+    business: state.business
+  }
+}
+export default connect(mapStateToProps, actions)(Listing)

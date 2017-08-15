@@ -7,6 +7,7 @@ import Business_Listings from './components/pages/businessListings'
 
 //pages folder
 import About from './components/pages/About'
+import Contact from './components/pages/Contact'
 
 class App extends Component{
 
@@ -21,8 +22,7 @@ class App extends Component{
 
             <Route exact path='/' component={Form_For_Location} />
             <Route path='/about' component={About} />
-            <hr />
-            <Business_Listings />
+            <Route path='/contact' component={Contact} />
         </div>
         </div>
       </Router>

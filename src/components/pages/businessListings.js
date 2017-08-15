@@ -1,44 +1,48 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
 
 import Listing from './Individual-Listing'
+import * as actions from '../../redux_actions/yelpSearches'
 
-class Business_Listings extends Component{
+class Business_Listings extends Component {
 
+  componentDidMount() {
+      this.props.initialState()
+  }
 
-empty = () =>{
-  return(
-    <div>Search</div>
-  )
-}
+  empty = () => {
+    return (
+      <div>Search</div>
+    )
+  }
 
-viewListings = () =>{
-  return (
-    <div>
-      {this.props.searchReturn.map(i =>{
-        return (
-        <div key={i.id}>
-          <Listing  {...i} />
-        </div>
-        )
-      })}
-    </div>
-  )
-}
+  viewListingsWithPeopleGoing = () => {
 
-  render(){
-if(this.props.searchReturn === null){
-return  this.empty()
-} else {
-return this.viewListings()
-}
+    return (
+      <div>
+        {this.props.searchReturn.map(i => {
+          return (
+            <div key={i.id}>
+              <Listing {...i} hasPeopleGoing={this.props.going}/>
+            </div>
+          )
+        })}
+      </div>
+    )
 
   }
-}
 
-function mapStateToProps(state){
-  return{
-    searchReturn: state.business
-  }
+  render() {
+    if (this.props.searchReturn === null) {
+
+      return this.empty()
+    } else {
+      return this.viewListingsWithPeopleGoing()
+    }
+
 }
-export default connect(mapStateToProps)(Business_Listings)
+}
+function mapStateToProps(state) {
+  return {searchReturn: state.business, going: state.going}
+}
+export default connect(mapStateToProps, actions)(Business_Listings)
