@@ -16,7 +16,7 @@ let store;
 if(process.env.NODE_ENV == 'dev'){
    store = createStore(reducers, applyMiddleware(thunk, logger))
 } else{
-   store = createStore(reducers)
+   store = createStore(reducers, applyMiddleware(thunk))
 }
 
 

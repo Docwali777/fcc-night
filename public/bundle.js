@@ -60,7 +60,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "bcf7818d85a35a2ec90e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "695dca5eb27bcb6f8563"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -20686,7 +20686,7 @@ var store = void 0;
 if (false) {
    store = (0, _redux.createStore)(_index2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default, _reduxLogger.logger));
 } else {
-   store = (0, _redux.createStore)(_index2.default);
+   store = (0, _redux.createStore)(_index2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default));
 }
 
 (0, _reactDom.render)(_react2.default.createElement(
