@@ -8,9 +8,16 @@ import { createStore, applyMiddleware } from 'redux'
 import { logger } from 'redux-logger'
 import thunk from 'redux-thunk'
 
+console.log('NODE_ENV',process.env.NODE_ENV);
 import reducers from './redux_reducers/index'
 
-const store = createStore(reducers, applyMiddleware(thunk, logger))
+let store;
+
+if(process.env.NODE_ENV == 'dev'){
+   store = createStore(reducers, applyMiddleware(thunk, logger))
+} else{
+   store = createStore(reducers)
+}
 
 
 

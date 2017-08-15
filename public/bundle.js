@@ -60,7 +60,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f5472d8f8f1e4a4a9dac"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bcf7818d85a35a2ec90e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -20678,12 +20678,21 @@ var _index2 = _interopRequireDefault(_index);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var store = (0, _redux.createStore)(_index2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default, _reduxLogger.logger));
+console.log('NODE_ENV', "production");
+
+
+var store = void 0;
+
+if (false) {
+   store = (0, _redux.createStore)(_index2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default, _reduxLogger.logger));
+} else {
+   store = (0, _redux.createStore)(_index2.default);
+}
 
 (0, _reactDom.render)(_react2.default.createElement(
-  _reactRedux.Provider,
-  { store: store },
-  _react2.default.createElement(_App2.default, null)
+   _reactRedux.Provider,
+   { store: store },
+   _react2.default.createElement(_App2.default, null)
 ), document.getElementById('wali'));
 
 /***/ }),

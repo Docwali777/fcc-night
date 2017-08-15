@@ -39,6 +39,9 @@ module.exports = {
     new cleanWebpackPlugin(['public'], {
       verbose: true,
       dry: false
-    })
+    }),
+    new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify('dev')
+  })
 ]
 }
