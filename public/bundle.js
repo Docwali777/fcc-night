@@ -60,7 +60,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ed76d5b7b07eb85514cb"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "dab6b16d3bf9069da778"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -48285,13 +48285,11 @@ var Listing = function (_Component) {
     };
 
     _this.isGoing = function () {
-      console.log(_this.props.id);
       _this.setState({ likes: _this.state.likes + 1 });
       _this.props.isGoing(_this.props.id);
     };
 
     _this.isNotGoing = function () {
-      console.log(_this.props.id);
       _this.setState({ likes: _this.state.likes - 1 });
       _this.props.isNotGoing(_this.props.id);
     };

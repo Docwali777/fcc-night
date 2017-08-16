@@ -23,12 +23,10 @@ this.setState({likes: i.isGoing, isGoing: !this.state.isGoing})
 }
 
 isGoing = () =>{
-console.log(this.props.id);
 this.setState({likes: this.state.likes + 1})
 this.props.isGoing(this.props.id)
 }
 isNotGoing = () =>{
-console.log(this.props.id);
 this.setState({likes: this.state.likes - 1})
 this.props.isNotGoing(this.props.id)
 }
