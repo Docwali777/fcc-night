@@ -8,6 +8,7 @@ import Business_Listings from './components/pages/businessListings'
 //pages folder
 import About from './components/pages/About'
 import Contact from './components/pages/Contact'
+import Login from './components/pages/Login'
 
 class App extends Component{
 
@@ -23,6 +24,7 @@ class App extends Component{
             <Route exact path='/' component={Form_For_Location} />
             <Route path='/about' component={About} />
             <Route path='/contact' component={Contact} />
+            <Route path='/login' component={Login} />
         </div>
         </div>
       </Router>

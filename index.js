@@ -2,13 +2,14 @@ const express = require('express');
 const app = express()
 const path = require('path');
 const PORT  = process.env.PORT || 3000
+const passport = require('passport');
 const axios = require('axios');
 const keys = require('./PASSWORDS/keys')
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise
 
-
+require('./AUTH_PASSPORT/userAuth')
 
 //Set up hot-reloading ONLY in development
 if(process.env.NODE_ENV === 'dev'){
@@ -34,8 +35,14 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(express.static('public'))
 
+app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 //ROUTES
 require('./ROUTES/api_yelp_search')(app)
+require('./ROUTES/authRoutes')(app)
+
 
 app.get('/*', (req, res)=>{
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))

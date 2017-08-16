@@ -6,8 +6,10 @@ export default function goingReducer(state= [], action){
     break
 
     case 'POST_IS_GOING':
-    console.log('POST_IS_GOING- PREV STATE', state);
-    console.log('POST_IS_GOING - ACTION.STATE', action.payload );
+    return {going: action.payload}
+    break;
+
+    case 'IS_NOT_GOING':
     return {going: action.payload}
     break;
 

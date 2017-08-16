@@ -7,7 +7,8 @@ class Listing extends Component {
   constructor(props) {
     super(props)
       this.state = {
-        likes: 0
+        likes: 0,
+        isGoing: false
       }
   }
 componentDidMount(){
@@ -16,7 +17,7 @@ this.setGoingStatus()
 setGoingStatus =() =>{
 this.props.going.map(i =>{
 if(i.id == this.props.id){
-this.setState({likes: i.isGoing})
+this.setState({likes: i.isGoing, isGoing: !this.state.isGoing})
 }
 })
 }
@@ -26,23 +27,41 @@ console.log(this.props.id);
 this.setState({likes: this.state.likes + 1})
 this.props.isGoing(this.props.id)
 }
+isNotGoing = () =>{
+console.log(this.props.id);
+this.setState({likes: this.state.likes - 1})
+this.props.isNotGoing(this.props.id)
+}
+
+ifLoggedin =() =>{
+if(this.props.user !== ""){
+return(
+<div>
+  <Button disabled={this.state.likes == 0 ? true: false} onClick={()=>this.isNotGoing()} bsStyle='danger' bsSize='xsmall'> - </Button>
+  <Button bsStyle='default' bsSize='small'>{this.state.likes}</Button>
+  <Button onClick={()=>this.isGoing()} bsStyle='success' bsSize='xsmall'> + </Button>
+</div>
+)
+}
+return   <Button bsStyle='default' bsSize='small'>{this.state.likes}</Button>
+}
+
 
   render() {
+
     return (
 
       <Grid>
           <Well>
         <Row className="show-grid">
           <Panel>
-          <Col xs={6} md={8}>
-              How May People Are Going?  &nbsp;
-          </Col>
 
-          <Col xs={6} md={4}>
-            <Button bsStyle='danger' bsSize='xsmall'> - </Button>
-            <Button bsStyle='default' bsSize='small'>{this.state.likes}</Button>
-            <Button onClick={()=>this.isGoing()} bsStyle='success' bsSize='xsmall'> + </Button>
+        <div className='text-center'>
+          <Col >
+              How May People Are Going?  &nbsp;
+{this.ifLoggedin()}
           </Col>
+        </div>
 
             </Panel>
           <Col xs={6} md={3}>
@@ -70,7 +89,8 @@ this.props.isGoing(this.props.id)
 function mapStateToProps(state){
   return {
     going: state.going,
-    business: state.business
+    business: state.business,
+    user: state.user
   }
 }
 export default connect(mapStateToProps, actions)(Listing)

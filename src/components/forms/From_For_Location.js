@@ -19,12 +19,16 @@ constructor(props){
   }
   formData = (e) =>{
     e.preventDefault()
+
     this.props.search(this.state)
 
   }
   render(){
     return(
       <div>
+        <div>
+            <a href='/auth/google'>Register</a>
+        </div>
         <form onSubmit={this.formData}>
           <div className='form-group'>
             <input

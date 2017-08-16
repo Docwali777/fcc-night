@@ -3,11 +3,20 @@ import { Nav, NavItem, Navbar } from 'react-bootstrap'
 
 import {Link} from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
+import {connect} from 'react-redux'
+
+import * as actions from '../../redux_actions/yelpSearches'
 
 class Menu extends Component{
+
+componentDidMount(){
+  this.props.userSignedIn()
+}
+
+
   render(){
     return (
-      <Navbar inverse collapseOnSelect>
+      <Navbar inverse >
    <Navbar.Header>
      <Navbar.Brand>
        <Link to="/">Let's Go Out</Link>
@@ -25,9 +34,11 @@ class Menu extends Component{
       </LinkContainer>
      </Nav>
      <Nav pullRight>
-       <NavItem eventKey={1} href="/login">Login</NavItem>
-       <NavItem eventKey={2} href="/register">Register</NavItem>
-       <NavItem eventKey={1} href="/logout">Logout</NavItem>
+
+      {this.props.user === "" ?
+        <NavItem  eventKey={1} href="/auth/google">Login</NavItem> :
+       <NavItem eventKey={1} href="/logout">Logout</NavItem> }
+
 
      </Nav>
    </Navbar.Collapse>
@@ -35,4 +46,10 @@ class Menu extends Component{
     )
   }
 }
-export default Menu
+
+function mapStateToProps(state){
+  return {
+    user: state.user
+  }
+}
+export default connect(mapStateToProps, actions)(Menu)

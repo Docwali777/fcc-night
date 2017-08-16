@@ -13,7 +13,7 @@ module.exports = (app) => {
     })
   })
   app.post('/api/yelp/search', (req, res) => {
-    console.log(req.body);
+
     let {city_state, term} = req.body
 
     ///----
@@ -56,7 +56,24 @@ module.exports = (app) => {
         } else {
             isGoing.isGoing += 1
             isGoing.save()
-            console.log(isGoing);
+
+            res.send(isGoing)
+        }
+    })
+
+  })
+
+  //Decided not to go
+  app.post('/api/yelp/isNotGoing', (req, res) => {
+    let {going} = req.body
+    search.findOne({
+      id: going
+    }, (err, isGoing) => {
+      if (err) {console.log('err with database', err)}
+        else {
+            isGoing.isGoing -= 1
+            isGoing.save()
+
             res.send(isGoing)
         }
     })

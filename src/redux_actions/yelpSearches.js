@@ -18,6 +18,14 @@ export function isGoing(going) {
   }
 }
 
+export function isNotGoing(going) {
+  return dispatch => {
+    axios.post('/api/yelp/isNotGoing', {going}).then(whoIsGoing => {
+      dispatch({type: 'IS_NOT_GOING', payload: whoIsGoing.data})
+    }).catch(e => console.log('error posting api/yelp/going', e))
+  }
+}
+
 export function initialState(){
   return dispatch =>{
     axios.get('/api/yelp/initialState')
@@ -28,6 +36,14 @@ export function initialState(){
         })
       }).catch(e =>{
         console.log('Axios error getting data', e);
+      })
+  }
+}
+export function userSignedIn(){
+  return dispatch =>{
+    axios.get('/auth/callback_user')
+      .then(user =>{
+        dispatch({type: 'USER_SIGNED_IN', payload: user.data})
       })
   }
 }

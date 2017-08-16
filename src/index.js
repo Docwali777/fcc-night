@@ -13,7 +13,7 @@ import reducers from './redux_reducers/index'
 
 let store;
 
-if(process.env.NODE_ENV == 'dev'){
+if(process.env.NODE_ENV === 'dev'){
    store = createStore(reducers, applyMiddleware(thunk, logger))
 } else{
    store = createStore(reducers, applyMiddleware(thunk))
