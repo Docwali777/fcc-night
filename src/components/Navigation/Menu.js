@@ -16,10 +16,15 @@ componentDidMount(){
 
   render(){
     return (
-      <Navbar inverse >
+      <Navbar inverse collapseOnSelect >
    <Navbar.Header>
      <Navbar.Brand>
        <Link to="/">Let's Go Out</Link>
+     </Navbar.Brand>
+     <Navbar.Brand>
+       {this.props.user === "" ?
+         <a  href="/auth/google">Login</a> :
+        <a href="/logout">Logout</a> }
      </Navbar.Brand>
      <Navbar.Toggle />
    </Navbar.Header>
@@ -34,10 +39,11 @@ componentDidMount(){
       </LinkContainer>
      </Nav>
      <Nav pullRight>
-
-      {this.props.user === "" ?
-        <NavItem  eventKey={1} href="/auth/google">Login</NavItem> :
-       <NavItem eventKey={1} href="/logout">Logout</NavItem> }
+       {this.props.user === "" ?
+         <NavItem  href="/auth/google">Login</NavItem> :
+      <LinkContainer to='/logout'>
+        <NavItem eventKey={1} href="/logout">Logout</NavItem>
+          </LinkContainer> }
 
 
      </Nav>
