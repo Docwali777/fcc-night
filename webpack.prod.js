@@ -5,6 +5,7 @@ const HtmlWebpackPlugin= require('html-webpack-plugin')
 const cleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
+  devtool: 'cheap-module-source-map',
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
@@ -23,10 +24,13 @@ module.exports = {
     ]
   },
   plugins: [
-    // OccurenceOrderPlugin is needed for webpack 1.x only
-    // new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.LoaderOptionsPlugin({
+    minimize: true,
+    debug: false
+  }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     // new webpack.HotModuleReplacementPlugin(),
-    // new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html',
@@ -39,16 +43,7 @@ module.exports = {
     new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production')
   }),
-  new webpack.optimize.UglifyJsPlugin({
-      beautify: false,
-      mangle: {
-        screw_ie8: true,
-        keep_fnames: true
-      },
-      compress: {
-        screw_ie8: true
-      },
-      comments: false
-    })
+  new webpack.optimize.UglifyJsPlugin(),
+     new webpack.optimize.AggressiveMergingPlugin()
 ]
 }
