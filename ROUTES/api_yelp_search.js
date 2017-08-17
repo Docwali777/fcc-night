@@ -3,6 +3,50 @@ const keys = require('../PASSWORDS/keys')
 const axios = require('axios');
 const latitude = require('latitude')
 
+var iplocation = require('iplocation')
+
+
+
+
+const publicIp = require('public-ip');
+
+publicIp.v4().then(ip => {
+    console.log(ip);
+    //=> '46.5.21.123'
+});
+
+//
+// const loc = publicIp.v6().then(ip => {
+//   iplocation(ip, (err, address)=>{
+//     if(err){console.log('can not locate')}
+//     else {
+//       axios({
+//         method: 'get',
+//         url: 'https://api.yelp.com/v3/businesses/search',
+//         headers: {
+//           Authorization: keys.YELP_AUTHORIZATION_KEY
+//         },
+//         params: {
+//           longitude: address.longitude,
+//           latitude: address.latitude,
+//           term: term
+//         }
+//       }).then(term => {
+//
+//         res.send(term.data)
+//
+//       }).catch(e => {
+//         console.log(e);
+//       })
+//
+//     }
+//   })
+// });
+
+
+
+
+
 module.exports = (app) => {
   app.get('/api/yelp/initialState', (req, res) => {
     search.find({}, (err, going)=>{

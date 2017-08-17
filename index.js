@@ -51,6 +51,7 @@ require('./ROUTES/authRoutes')(app)
 
 
 app.get('/*', (req, res)=>{
+  console.log(req);
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 })
 

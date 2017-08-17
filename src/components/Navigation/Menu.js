@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Nav, NavItem, Navbar } from 'react-bootstrap'
 
-import {Link} from 'react-router-dom'
+import {Link, browserHistory} from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 import {connect} from 'react-redux'
 
@@ -12,7 +12,9 @@ class Menu extends Component{
 componentDidMount(){
   this.props.userSignedIn()
 }
-
+login = () =>{
+  browserHistory.push('/login')
+}
 
   render(){
     return (
@@ -40,10 +42,9 @@ componentDidMount(){
      </Nav>
      <Nav pullRight>
        {this.props.user === "" ?
-         <NavItem  href="/auth/google">Login</NavItem> :
-      <LinkContainer to='/logout'>
-        <NavItem eventKey={1} href="/logout">Logout</NavItem>
-          </LinkContainer> }
+         <NavItem onClick={()=> this.login()} href="/auth/google">Login</NavItem> :
+
+        <NavItem eventKey={1} href="/logout">Logout</NavItem> }
 
 
      </Nav>
